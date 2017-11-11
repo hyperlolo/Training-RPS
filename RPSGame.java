@@ -16,8 +16,8 @@ public class RPSGame {
 		String winner = null;
 		System.out
 				.print("Welcome to this game of rock paper scissors where you can break your ties using other games.");
-		do {//Runs loop until user chooses not to play another game
-			do {//Loop for picking game mode
+		do {// Runs loop until user chooses not to play another game
+			do {// Loop for picking game mode
 				System.out.print("\n\nPlease pick if you would like to play the normal(N) or random(R) mode.");
 				userRPSChoice = reader.next().charAt(0);
 			} while (userRPSChoice != 'r' && userRPSChoice != 'R' && userRPSChoice != 'n' && userRPSChoice != 'N');
@@ -52,12 +52,12 @@ public class RPSGame {
 									// game rather than have it be randomly picked for them.
 		Scanner reader = new Scanner(System.in);
 		int userScore = 0, compScore = 0;
-		int gameWinner = 3;
+		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
 		char compChoice, tieBreaker, userChoice;
 		String winner = null;
 		System.out.println(
-				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors randomly");
+				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors normally");
 		do {// Start of normal RPS
 			String compChoices = "rps"; // The avaliable string choices that the computer can pick from
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
@@ -72,9 +72,19 @@ public class RPSGame {
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
-					winner = "Tie";
-					System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
-							+ "                     " + userScore + "                       " + compScore);
+					System.out.print("\nTie");
+					tieScore = oddAndEven(0);
+					if (tieScore == 1) {// User wins if return value is 1 from the game
+						userScore++;
+						winner = "User";
+						System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
+								+ "                     " + userScore + "                       " + compScore);
+					} else {// User loses if the return value is 0
+						compScore++;
+						winner = "Computer";
+						System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
+								+ "                     " + userScore + "                       " + compScore);
+					}
 					round++;
 
 				} else if (userChoice == 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
@@ -93,21 +103,21 @@ public class RPSGame {
 					round++;
 				}
 			}
-			if (userScore >= 2) {
+			if (userScore >= 2) {// If user scores 2 before the computer, they win.
 				return gameWinner = 1;
 			}
-			if (compScore >= 2) {
+			if (compScore >= 2) {// Computer wins if it scores 2 before the user.
 				return gameWinner = 0;
 			}
 			game = 1;
-		} while (gameWinner <=0 || gameWinner >=1);
+		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
 	}
 
 	public static int randRps() { // Random rock paper Scissors Game
 		Scanner reader = new Scanner(System.in);
 		int userScore = 0, compScore = 0;
-		int gameWinner = 3;
+		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
 		char compChoice, tieBreaker, userChoice;
 		String winner = null;
@@ -127,9 +137,19 @@ public class RPSGame {
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
-					winner = "Tie";
-					System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
-							+ "                     " + userScore + "                       " + compScore);
+					System.out.print("\nTie");
+					tieScore = oddAndEven(1);
+					if (tieScore == 1) {// User wins if return value is 1 from the game
+						userScore++;
+						winner = "User";
+						System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
+								+ "                     " + userScore + "                       " + compScore);
+					} else {// User loses if the return value is 0
+						compScore++;
+						winner = "Computer";
+						System.out.print("\n" + round + "\t\t\t" + compChoice + "  \t\t\t" + userChoice + "\t\t   " + winner
+								+ "                     " + userScore + "                       " + compScore);
+					}
 					round++;
 
 				} else if (userChoice == 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
@@ -148,14 +168,86 @@ public class RPSGame {
 					round++;
 				}
 			}
-			if (userScore >= 2) {
+			if (userScore >= 2) {// If user scores 2 before the computer, they win.
 				return gameWinner = 1;
 			}
-			if (compScore >= 2) {
+			if (compScore >= 2) {// Computer wins if it scores 2 before the user.
 				return gameWinner = 0;
 			}
 			game = 1;
-		} while (gameWinner <=0 || gameWinner >=1);
+		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
 	}// end rPS
+
+	public static int oddAndEven(int rand) {
+		char userChoiceOddEven, compChoiceOddEven, userFingers;
+		int userFinger = 3, compFinger = 3;
+		int counterOddEven = 1;
+		int scoreOddEven = 0;
+		int gameOfOddAndEven = 0;
+		int compScoreOddEven = 0;
+		Scanner inputOddEven = new Scanner(System.in);
+		if (rand == 0) {
+			System.out.println(
+					"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Odd or Even to break the tie");
+		} else {
+			System.out.println(
+					"\n-----------------------------------------------------------------------------------------------\nThe game of odd or even was chosen randomly for you to break the tie");
+		}
+		// String finger = "ab"; // Comp chooses between 1-2 fingers
+		int randIndexFinger = (int) (Math.random() * 2);
+		// compFinger = finger.charAt(randIndexFinger);
+		compFinger = randIndexFinger;
+		// System.out.println("Computers finger choice is " +compFinger);
+		do {
+			System.out.println("Pick an odd or even outcome! Using \"O\" for odd and \"E\"!");
+			userChoiceOddEven = inputOddEven.nextLine().charAt(0); // user picks their finger
+		} while (userChoiceOddEven != 'o' && userChoiceOddEven != 'O' && userChoiceOddEven != 'e'
+				&& userChoiceOddEven != 'E');
+		if (userChoiceOddEven == 'e') {
+			compChoiceOddEven = 'o';
+		} else {
+			compChoiceOddEven = 'e';
+		}
+		// System.out.println("User Choice " +userChoiceOddEven +" Comp Choice "
+		// +compChoiceOddEven);
+		do {
+			System.out.println("Pick between 1-2 fingers to hold up!");
+			userFinger = inputOddEven.nextInt();
+		} while (userFinger < 1 || userFinger > 2);
+		// System.out.println("user Finger " +userFinger +" Comp finger " +compFinger);
+		// Step 5: IF userFinger == compFinger THEN Output "Even"
+		if (userFinger == compFinger) {
+			System.out.println("Even!");
+			// Step 5.1: IF userChoice = 'e' Then +score and round winner ELSE loser
+			if (userChoiceOddEven == 'e') {
+				System.out.println("Winner!");
+				System.out.println("Your score went up by 1!");
+				System.out.print("Round\t\tComputer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
+				return gameOfOddAndEven = 1;
+			} else {
+				System.out.println("Loser!");
+				System.out.println("Computer score went up by 1!");
+				System.out.print("Round\t\tComputer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
+				return gameOfOddAndEven = 0;
+			}
+		}
+		// Step 5.2 Output Odd if userFinger =/= compFinger
+		else {
+			System.out.println("Odd");
+			// Step 5.2.1: IF userChoice = 'o' Then +score and round winner ELSE loser
+			if (userChoiceOddEven == 'o') {
+				System.out.println("Winner!");
+				System.out.println("Your score went up by 1!");
+				System.out.print("Round\t\tComputer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
+				return gameOfOddAndEven = 1;
+			} else {
+				System.out.println("Loser!");
+				System.out.println("Computer score went up by 1!");
+				System.out.print("Round\t\tComputer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
+				return gameOfOddAndEven = 0;
+			}
+		}
+	}
+
 }// end class
