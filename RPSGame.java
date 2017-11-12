@@ -13,7 +13,6 @@ public class RPSGame {
 		Scanner reader = new Scanner(System.in);
 		int gameWinner = 3;
 		char userRPSChoice, retry = 0;
-		String winner = null;
 		System.out
 				.print("Welcome to this game of rock paper scissors where you can break your ties using other games.");
 		do {// Runs loop until user chooses not to play another game
@@ -54,16 +53,16 @@ public class RPSGame {
 		int userScore = 0, compScore = 0;
 		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
-		char compChoice, tieBreaker, userChoice;
+		char compChoice, userChoice;
 		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
 		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
-		Nim nimGame = new Nim();
-		OddAndEven OnEGame = new OddAndEven();
+		new Nim();
+		new OddAndEven();
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors normally");
 		do {// Start of normal RPS
-			String compChoices = "rps"; // The avaliable string choices that the computer can pick from
+			String compChoices = "rps"; // The available string choices that the computer can pick from
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
 			compChoice = compChoices.charAt(compRand); // 1 number picked above, then assigned to the corresponding
 														// string
@@ -103,12 +102,12 @@ public class RPSGame {
 						System.out.println(
 								"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Odd and Even to break the tie");
 
-						tieScore = OnEGame.oddAndEven();
+						tieScore = OddAndEven.oddAndEven();
 					} else if (userGamePick == 2) {
 						System.out.println(
 								"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Nim to break the tie");
 
-						tieScore = nimGame.nim();
+						tieScore = Nim.nim();
 					}
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;
@@ -162,12 +161,12 @@ public class RPSGame {
 		int userScore = 0, compScore = 0;
 		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
-		char compChoice, tieBreaker, userChoice;
+		char compChoice, userChoice;
 		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
 		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
-		Nim nimGame = new Nim();
-		OddAndEven OnEGame = new OddAndEven();
+		new Nim();
+		new OddAndEven();
 		
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors randomly");
@@ -211,12 +210,12 @@ public class RPSGame {
 						System.out.println(
 								"\n-----------------------------------------------------------------------------------------------\nThe game of Odd and Even was chosen randomly for you to break the tie");
 
-						tieScore = OnEGame.oddAndEven();
+						tieScore = OddAndEven.oddAndEven();
 					} else if (compGamePick == 2) {
 						System.out.println(
 								"\n-----------------------------------------------------------------------------------------------\nThe game of Nim was chosen randomly for you to break the tie");
 
-						tieScore = nimGame.nim();
+						tieScore = Nim.nim();
 					}
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;

@@ -1,6 +1,6 @@
 /*Hyperlolo
  * 11/11/17
- * Game of Nim used inside of RPS
+ * Game of Nim used inside of RPS game
  */ 
 package trainingRPSGames;
 
@@ -10,10 +10,9 @@ public class Nim {
 
 	public static void main(String[] args) {
 	int winner = nim();
-	//System.out.println("Winner is " +winner);
+	System.out.println("Winner is " +winner);
 	}
 	public static int nim() {
-		Scanner input = new Scanner(System.in);
 		int toothpicks = 23;
 		int userPick = 0;
 		int userTurn = 1;
@@ -42,6 +41,7 @@ public class Nim {
 		} while (toothpicks > 4);
 		winner = endgame(userTurn, toothpicks);
 		return winner;
+		
 	}
 	
 	public static int[] compsTurn(int toothpicks, int userPick) {
