@@ -1,6 +1,6 @@
 /*Hyperlolo
  * 11/6/17
- * Training Rock paper Scissors with others games intergrated into it
+ * Training Rock paper Scissors with others games integrated into it
  */
 package trainingRPSGames;
 
@@ -58,6 +58,8 @@ public class RPSGame {
 		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
 		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
+		Nim nimGame = new Nim();
+		OddAndEven OnEGame = new OddAndEven();
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors normally");
 		do {// Start of normal RPS
@@ -65,6 +67,7 @@ public class RPSGame {
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
 			compChoice = compChoices.charAt(compRand); // 1 number picked above, then assigned to the corresponding
 														// string
+			//System.out.println("Computer pick is " + compChoice);
 			do {
 				System.out.println("\nPlease pick Rock(R), Paper(P), or Scissors(S)");
 				userChoice = reader.next().charAt(0);// Asks user for their choice
@@ -89,12 +92,24 @@ public class RPSGame {
 					|| userChoice == 'p' && compChoice == 's' || userChoice == 'r' && compChoice == 'p') {
 				System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4, header5,
 						header6);
-			}
+			} // Only runs this if the round is not a tie
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
-					System.out.print("\nTie");
-					tieScore = oddAndEven(0);
+					System.out.print("\nTie. Please Choose what game you would like to play.\n"
+							+ "A game of Odd and Even(1) or the game of Nim(2)");
+					int userGamePick = reader.nextInt();
+					if (userGamePick == 1) {
+						System.out.println(
+								"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Odd and Even to break the tie");
+
+						tieScore = OnEGame.oddAndEven();
+					} else if (userGamePick == 2) {
+						System.out.println(
+								"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Nim to break the tie");
+
+						tieScore = nimGame.nim();
+					}
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;
 						winner = "User";
@@ -140,7 +155,7 @@ public class RPSGame {
 			game = 1;
 		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
-	}
+	}//End normal RPS
 
 	public static int randRps() { // Random rock paper Scissors Game
 		Scanner reader = new Scanner(System.in);
@@ -151,6 +166,9 @@ public class RPSGame {
 		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
 		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
+		Nim nimGame = new Nim();
+		OddAndEven OnEGame = new OddAndEven();
+		
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors randomly");
 		do {// Start of normal RPS
@@ -158,6 +176,7 @@ public class RPSGame {
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
 			compChoice = compChoices.charAt(compRand); // 1 number picked above, then assigned to the corresponding
 														// string
+			//System.out.println("Computer choice is " + compChoice);
 			do {
 				System.out.println("\nPlease pick Rock(R), Paper(P), or Scissors(S)");
 				userChoice = reader.next().charAt(0);// Asks user for their choice
@@ -186,8 +205,19 @@ public class RPSGame {
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
-					System.out.print("\nTie");
-					tieScore = oddAndEven(1);
+					System.out.print("\nTie. A game will be randomly chosen for you to play!");
+					int compGamePick = (int) ((Math.random() * 2) + 1);
+					if (compGamePick == 1) {
+						System.out.println(
+								"\n-----------------------------------------------------------------------------------------------\nThe game of Odd and Even was chosen randomly for you to break the tie");
+
+						tieScore = OnEGame.oddAndEven();
+					} else if (compGamePick == 2) {
+						System.out.println(
+								"\n-----------------------------------------------------------------------------------------------\nThe game of Nim was chosen randomly for you to break the tie");
+
+						tieScore = nimGame.nim();
+					}
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;
 						winner = "User";
@@ -232,77 +262,9 @@ public class RPSGame {
 			game = 1;
 		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
-	}// end rPS
+	}//End random RPS
 
-	public static int oddAndEven(int rand) {
-		char userChoiceOddEven, compChoiceOddEven;
-		int userFinger = 3, compFinger = 3;
-		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
-		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
-
-		Scanner reader = new Scanner(System.in);
-		if (rand == 0) {
-			System.out.println(
-					"\n-----------------------------------------------------------------------------------------------\nYou have chosen to the game of Odd or Even to break the tie");
-		} else {
-			System.out.println(
-					"\n-----------------------------------------------------------------------------------------------\nThe game of odd or even was chosen randomly for you to break the tie");
-		}
-		// String finger = "ab"; // Comp chooses between 1-2 fingers
-		int randIndexFinger = (int) (Math.random() * 2);
-		// compFinger = finger.charAt(randIndexFinger);
-		compFinger = randIndexFinger;
-		// System.out.println("Computers finger choice is " +compFinger);
-		do {
-			System.out.println("Pick an odd or even outcome! Using \"O\" for odd and \"E\"!");
-			userChoiceOddEven = reader.nextLine().charAt(0); // user picks their finger
-		} while (userChoiceOddEven != 'o' && userChoiceOddEven != 'O' && userChoiceOddEven != 'e'
-				&& userChoiceOddEven != 'E');
-		if (userChoiceOddEven == 'e') {
-			compChoiceOddEven = 'o';
-		} else {
-			compChoiceOddEven = 'e';
-		}
-		// System.out.println("User Choice " +userChoiceOddEven +" Comp Choice "
-		// +compChoiceOddEven);
-		do {
-			System.out.println("Pick between 1-2 fingers to hold up!");
-			userFinger = reader.nextInt();
-		} while (userFinger < 1 || userFinger > 2);
-		// System.out.println("user Finger " +userFinger +" Comp finger " +compFinger);
-		// Step 5: IF userFinger == compFinger THEN Output "Even"
-		if (userFinger == compFinger) {
-			System.out.println("Even!");
-			// Step 5.1: IF userChoice = 'e' Then +score and round winner ELSE loser
-			if (userChoiceOddEven == 'e') {
-				System.out.println("Winner!");
-				System.out.println("Your score went up by 1!");
-				return 1;
-			} else {
-				System.out.println("Loser!");
-				System.out.println("Computer score went up by 1!");
-				return 0;
-			}
-		}
-		// Step 5.2 Output Odd if userFinger =/= compFinger
-		else {
-			System.out.println("Odd");
-			// Step 5.2.1: IF userChoice = 'o' Then +score and round winner ELSE loser
-			if (userChoiceOddEven == 'o') {
-				System.out.println("Winner!");
-				System.out.println("Your score went up by 1!");
-				System.out.printf("%-1s %s %s %s %s %s", header1, header2, header3, header4, header5, header6);
-				return 1;
-			} else {
-				System.out.println("Loser!");
-				System.out.println("Computer score went up by 1!");
-				System.out.printf("%-1s %s %s %s %s %s", header1, header2, header3, header4, header5, header6);
-				return 0;
-			}
-		}
-	}
-
-	public static String toString(char c) {
+	public static String toString(char c) {//Converts char to string for header
 		if (c == 'r') {
 			return "Rock";
 		} else if (c == 's') {
