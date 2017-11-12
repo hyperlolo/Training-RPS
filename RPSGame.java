@@ -55,8 +55,8 @@ public class RPSGame {
 		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
 		char compChoice, tieBreaker, userChoice;
-		String heading1 = "Round", heading2 = "Computer Choice", heading3 = "User Choice"
-				String heading4 = "Winner", heading 5 = "User Score", heading 6 = "Comp Score"
+		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
+		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors normally");
@@ -84,7 +84,12 @@ public class RPSGame {
 			} else {
 				compChose = toString(compChoice);
 			}
-			System.out.printf("%-s %s %s %s %s %s", heading1, heading2, heading3, heading4, heading5, heading6);
+			if (userChoice == 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
+					|| userChoice == 'p' && compChoice == 'r' && userChoice == 's' && compChoice == 'r'
+					|| userChoice == 'p' && compChoice == 's' || userChoice == 'r' && compChoice == 'p') {
+				System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4, header5,
+						header6);
+			}
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
@@ -93,12 +98,18 @@ public class RPSGame {
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;
 						winner = "User";
-						System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+						System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4,
+								header5, header6);
+						System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+								userScore, compScore);
 
 					} else {// User loses if the return value is 0
 						compScore++;
 						winner = "Computer";
-						System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+						System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4,
+								header5, header6);
+						System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+								userScore, compScore);
 
 					}
 					round++;
@@ -107,14 +118,15 @@ public class RPSGame {
 						|| userChoice == 'p' && compChoice == 'r') {// User wins
 					userScore++;
 					winner = "User";
-					System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
-
+					System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+							userScore, compScore);
 
 					round++;
 				} else {// Comp wins
 					compScore++;
 					winner = "Computer";
-					System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+					System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+							userScore, compScore);
 
 					round++;
 				}
@@ -136,8 +148,8 @@ public class RPSGame {
 		int gameWinner = 3, tieScore = 3;
 		int round = 1, game = 1;
 		char compChoice, tieBreaker, userChoice;
-		String heading1 = "Round", heading2 = "Computer Choice", heading3 = "User Choice"
-		String heading4 = "Winner", heading 5 = "User Score", heading 6 = "Comp Score"
+		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
+		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
 		String winner = null, userChose = null, compChose = null;
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors randomly");
@@ -165,7 +177,12 @@ public class RPSGame {
 			} else {
 				compChose = toString(compChoice);
 			}
-			System.out.printf("%-s %s %s %s %s %s", heading1, heading2, heading3, heading4, heading5, heading6);
+			if (userChoice == 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
+					|| userChoice == 'p' && compChoice == 'r' && userChoice == 's' && compChoice == 'r'
+					|| userChoice == 'p' && compChoice == 's' || userChoice == 'r' && compChoice == 'p') {
+				System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4, header5,
+						header6);
+			}
 			for (game = 1; game <= 1; game++) { // Runs it once and then reset for next round
 				if (userChoice == compChoice) { // Tie, user can choose to break the tie with a specific game or
 												// continue without choosing
@@ -174,27 +191,34 @@ public class RPSGame {
 					if (tieScore == 1) {// User wins if return value is 1 from the game
 						userScore++;
 						winner = "User";
-						System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+						System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4,
+								header5, header6);
+						System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+								userScore, compScore);
 					} else {// User loses if the return value is 0
 						compScore++;
 						winner = "Computer";
-						System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+						System.out.printf("%1s %15s %15s  %15s   %15s    %15s", header1, header2, header3, header4,
+								header5, header6);
+						System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+								userScore, compScore);
 
 					}
 					round++;
 
-				} else if (userChoice =n= 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
+				} else if (userChoice == 'r' && compChoice == 's' || userChoice == 's' && compChoice == 'p'
 						|| userChoice == 'p' && compChoice == 'r') {// User wins
 					userScore++;
 					winner = "User";
-					System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
-
+					System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+							userScore, compScore);
 
 					round++;
 				} else {// Comp wins
 					compScore++;
 					winner = "Computer";
-					System.out.printf("%-s %s %-5s %s %s %s",round, compChose, userChose, winner, userScore, compScore);
+					System.out.printf("%n %1s %15s   %15s %15s %15s %15s", round, compChose, userChose, winner,
+							userScore, compScore);
 
 					round++;
 				}
@@ -213,9 +237,9 @@ public class RPSGame {
 	public static int oddAndEven(int rand) {
 		char userChoiceOddEven, compChoiceOddEven;
 		int userFinger = 3, compFinger = 3;
-		String heading1 = "Round", heading2 = "Computer Choice", heading3 = "User Choice"
-				String heading4 = "Winner", heading 5 = "User Score", heading 6 = "Comp Score"
-		
+		String header1 = "Round", header2 = "Computer Chose", header3 = "User Chose";
+		String header4 = "Winner", header5 = "User Score", header6 = "Computer Score";
+
 		Scanner reader = new Scanner(System.in);
 		if (rand == 0) {
 			System.out.println(
@@ -253,12 +277,10 @@ public class RPSGame {
 			if (userChoiceOddEven == 'e') {
 				System.out.println("Winner!");
 				System.out.println("Your score went up by 1!");
-				System.out.print("Round\t\t   Computer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
 				return 1;
 			} else {
 				System.out.println("Loser!");
 				System.out.println("Computer score went up by 1!");
-				System.out.print("Round\t\t   Computer Choice\t\t  User Choice\t\t  Winner\t\tUser Score\t\tComp Score");
 				return 0;
 			}
 		}
@@ -269,12 +291,12 @@ public class RPSGame {
 			if (userChoiceOddEven == 'o') {
 				System.out.println("Winner!");
 				System.out.println("Your score went up by 1!");
-				System.out.printf("%-s %s %s %s %s %s", heading1, heading2, heading3, heading4, heading5, heading6);
+				System.out.printf("%-1s %s %s %s %s %s", header1, header2, header3, header4, header5, header6);
 				return 1;
 			} else {
 				System.out.println("Loser!");
 				System.out.println("Computer score went up by 1!");
-				System.out.printf("%-s %s %s %s %s %s", heading1, heading2, heading3, heading4, heading5, heading6);
+				System.out.printf("%-1s %s %s %s %s %s", header1, header2, header3, header4, header5, header6);
 				return 0;
 			}
 		}
