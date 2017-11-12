@@ -1,3 +1,7 @@
+/*Hyperlolo
+ * 11/11/17
+ * Game of Nim used inside of RPS
+ */ 
 package trainingRPSGames;
 
 import java.util.Scanner;

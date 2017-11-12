@@ -1,3 +1,7 @@
+/*Hyperlolo
+ * 11/11/17
+ * Odd and Even game used inside of RPS game
+ */
 package trainingRPSGames;
 
 import java.util.Scanner;
