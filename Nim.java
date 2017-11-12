@@ -7,11 +7,7 @@ package trainingRPSGames;
 import java.util.Scanner;
 
 public class Nim {
-
-	public static void main(String[] args) {
-	int winner = nim();
-	System.out.println("Winner is " +winner);
-	}
+	
 	public static int nim() {
 		int toothpicks = 23;
 		int userPick = 0;

@@ -8,11 +8,6 @@ import java.util.Scanner;
 
 public class OddAndEven {
 
-	public static void main(String[] args) {
-		oddAndEven();
-
-	}
-	
 	public static int oddAndEven() {
 		char userChoiceOddEven, compChoiceOddEven;
 		int userFinger = 3, compFinger = 3;
