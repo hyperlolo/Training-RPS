@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class RPSGame {
 
-	public static void main(String[] args) { // Main, user chooses what kind of a game mode they want to play, a random
-												// mode or a straight forward mode
+	public static void game() { // user chooses what kind of a game mode they want to play, a random
+								// mode or a straight forward mode
 		Scanner reader = new Scanner(System.in);
 		int gameWinner = 3;
 		char userRPSChoice, retry = 0;
@@ -45,7 +45,7 @@ public class RPSGame {
 
 			}
 		} while (retry != 'n' && retry != 'N');// Once user picks N after a game, the game ends.
-	}// end main
+	}// end game
 
 	public static int normRps() {// If user chose to do a normal game then they get to pick their tie breaker
 									// game rather than have it be randomly picked for them.
@@ -66,7 +66,7 @@ public class RPSGame {
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
 			compChoice = compChoices.charAt(compRand); // 1 number picked above, then assigned to the corresponding
 														// string
-			//System.out.println("Computer pick is " + compChoice);
+			// System.out.println("Computer pick is " + compChoice);
 			do {
 				System.out.println("\nPlease pick Rock(R), Paper(P), or Scissors(S)");
 				userChoice = reader.next().charAt(0);// Asks user for their choice
@@ -154,7 +154,7 @@ public class RPSGame {
 			game = 1;
 		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
-	}//End normal RPS
+	}// End normal RPS
 
 	public static int randRps() { // Random rock paper Scissors Game
 		Scanner reader = new Scanner(System.in);
@@ -167,7 +167,7 @@ public class RPSGame {
 		String winner = null, userChose = null, compChose = null;
 		new Nim();
 		new OddAndEven();
-		
+
 		System.out.println(
 				"-----------------------------------------------------------------------------------------------\nYou have chosen to play Rock Paper Scissors randomly");
 		do {// Start of normal RPS
@@ -175,7 +175,7 @@ public class RPSGame {
 			int compRand = (int) (Math.random() * 3); // Comp picks 1-3 numbers randomly
 			compChoice = compChoices.charAt(compRand); // 1 number picked above, then assigned to the corresponding
 														// string
-			//System.out.println("Computer choice is " + compChoice);
+			// System.out.println("Computer choice is " + compChoice);
 			do {
 				System.out.println("\nPlease pick Rock(R), Paper(P), or Scissors(S)");
 				userChoice = reader.next().charAt(0);// Asks user for their choice
@@ -261,9 +261,9 @@ public class RPSGame {
 			game = 1;
 		} while (gameWinner <= 0 || gameWinner >= 1);
 		return gameWinner;
-	}//End random RPS
+	}// End random RPS
 
-	public static String toString(char c) {//Converts char to string for header
+	public static String toString(char c) {// Converts char to string for header
 		if (c == 'r') {
 			return "Rock";
 		} else if (c == 's') {
