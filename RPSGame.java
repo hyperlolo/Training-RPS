@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class RPSGame {
 
-	public static void game() { // user chooses what kind of a game mode they want to play, a random
+	public static void main(String[] args) { // user chooses what kind of a game mode they want to play, a random
 								// mode or a straight forward mode
 		Scanner reader = new Scanner(System.in);
 		int gameWinner = 3;
